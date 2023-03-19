@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "771833027898",
+    "project_id": "notes-5bbac",
+    "storage_bucket": "notes-5bbac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771833027898:android:f76ae30d68a4dfef4d0403",
+        "android_client_info": {
+          "package_name": "com.jahsil.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771833027898-po9ot4lmhjg5tl6qmol6r24sdmks1ogp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd0wJfGEXeUfDxJnaI9Gd-laAO9QiWdrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771833027898-po9ot4lmhjg5tl6qmol6r24sdmks1ogp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
