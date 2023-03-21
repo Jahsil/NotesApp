@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoginView extends StatefulWidget {
@@ -53,10 +54,10 @@ class _LoginViewState extends State<LoginView> {
                         final password = _password.text;
 
                         try {
-                          final userCred = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          await FirebaseAuth.instance.signInWithEmailAndPassword(
                               email: email, password: password);
-                          print("user credential ===========");
-                          print(userCred);
+                           Navigator.of(context).pushNamedAndRemoveUntil(
+                               '/notes', (route) => false);
                         }on FirebaseAuthException catch(e){
                           if (e.code == "user-not-found"){
                             ScaffoldMessenger.of(context)
@@ -64,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
                               content: const Text('no user found'),
                               duration: const Duration(seconds: 1),
                               action: SnackBarAction(
-                                label: 'ACTION',
+                                label: 'undo',
                                 onPressed: () {},
                               ),
                             ));
