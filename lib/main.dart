@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:notes/constants/routes.dart';
 import 'package:notes/views/login_view.dart';
 import 'package:notes/views/notes_view.dart';
 import 'package:notes/views/register_view.dart';
@@ -20,9 +21,9 @@ void main() async {
       primarySwatch: Colors.blue,
     ),
     routes: {
-      '/login' : (context) => LoginView(),
-      '/register' : (context) => RegisterView(),
-      '/notes' : (context) => NotesView(),
+      loginRoute : (context) => LoginView(),
+      registerRoute : (context) => RegisterView(),
+      notesRoute : (context) => NotesView(),
     },
     home:  HomePage(),
 
