@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:notes/views/login_view.dart';
+import 'package:notes/views/notes_view.dart';
 import 'package:notes/views/register_view.dart';
 import 'package:notes/views/verify_email_view.dart';
 
@@ -13,6 +14,7 @@ void main() async {
 
   runApp(MaterialApp(
     title: 'My Notes',
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(
 
       primarySwatch: Colors.blue,
@@ -48,7 +50,7 @@ class HomePage extends StatelessWidget {
                 return LoginView();
               }
 
-              return Text("Finished");
+              return NotesView();
             default:
               return Center(child: CircularProgressIndicator());
           }
