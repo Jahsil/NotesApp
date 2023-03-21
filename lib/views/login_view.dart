@@ -38,13 +38,7 @@ class _LoginViewState extends State<LoginView> {
         title: Text("Please login"),
         centerTitle: true,
       ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-
-            case ConnectionState.done:
-              return Column(
+      body: Column(
                 children: [
                   TextField(
                     controller: _email,
@@ -107,18 +101,19 @@ class _LoginViewState extends State<LoginView> {
                           }
                         }
                       },
-                      child: Text("Login"))
+                      child: Text("Login")),
+                  SizedBox(height: 10,),
+                  TextButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            "/register", (route) => false);
+                      },
+                      child: Text("Register")
+                  ),
                 ],
-              );
-            default:
-              return Center(child: LoadingAnimationWidget.inkDrop(color: Colors.red, size: 50));
+              )
 
 
-          }
-
-        },
-
-      ),
     );
   }
 }
