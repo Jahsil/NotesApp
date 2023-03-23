@@ -24,6 +24,7 @@ void main() async {
       loginRoute : (context) => LoginView(),
       registerRoute : (context) => RegisterView(),
       notesRoute : (context) => NotesView(),
+      verifyEmailRoute : (context) => VerifyEmailView(),
     },
     home:  HomePage(),
 

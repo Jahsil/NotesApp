@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:notes/constants/routes.dart';
+import 'package:notes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Please login"),
+        title: Text("Please Register"),
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -61,10 +62,9 @@ class _RegisterViewState extends State<RegisterView> {
                         final password = _password.text;
 
                         try {
-                          final userCred = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          await FirebaseAuth.instance.createUserWithEmailAndPassword(
                               email: email, password: password);
-                          print("user credential ===========");
-                          print(userCred);
+                         Navigator.of(context).pushNamed(verifyEmailRoute);
                         }on FirebaseAuthException catch(e){
                           if (e.code == "weak-password"){
                             ScaffoldMessenger.of(context)
@@ -106,7 +106,19 @@ class _RegisterViewState extends State<RegisterView> {
                                 onPressed: () {},
                               ),
                             ));
+                          }else{
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(
+                              content: const Text('something went wrong'),
+                              duration: const Duration(seconds: 1),
+                              action: SnackBarAction(
+                                label: 'UNDO',
+                                onPressed: () {},
+                              ),
+                            ));
                           }
+                        }catch (e){
+                          await showErrorDialog(context, e.toString());
                         }
                       },
                       child: Text("Register")),
